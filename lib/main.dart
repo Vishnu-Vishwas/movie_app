@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/presentation/provider/movie_provider.dart';
+import 'package:movie_app/presentation/screens/movie_list_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => MovieProvider(), // use provider in material app
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -9,6 +17,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MovieListScreen(),
+    );
   }
 }
